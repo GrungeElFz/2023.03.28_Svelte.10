@@ -1,4 +1,6 @@
 <script>
+	import Button from '../Button.svelte';
+
 	let values = {
 		username: '',
 		email: '',
@@ -6,7 +8,11 @@
 	};
 </script>
 
-<form>
+<form
+	on:submit|preventDefault={() => {
+		console.log(values);
+	}}
+>
 	<label for="username">Username:</label>
 	<br />
 	<input id="username" name="username" type="text" bind:value={values.username} />
@@ -21,4 +27,6 @@
 	<br />
 	<input id="password" name="password" type="password" bind:value={values.password} />
 	<br />
+
+	<Button>Submit</Button>
 </form>
