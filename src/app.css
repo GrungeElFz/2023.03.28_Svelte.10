@@ -1,0 +1,10 @@
+:root {
+	--buttonBgColor: orangered;
+	--buttonTextColor: white;
+}
+
+body {
+	background-color: var(--backgroundColor);
+	color: var(--color);
+	font-family: 'IBM Plex Mono', monospace;
+}
