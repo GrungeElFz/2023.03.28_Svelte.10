@@ -6,11 +6,17 @@
 		email: '',
 		password: ''
 	};
+	let isSubmitting = false;
 </script>
 
 <form
 	on:submit|preventDefault={() => {
 		console.log(values);
+		isSubmitting = true;
+
+		setTimeout(() => {
+			isSubmitting = false;
+		}, 1000);
 	}}
 >
 	<label for="username">Username:</label>
@@ -28,5 +34,5 @@
 	<input id="password" name="password" type="password" bind:value={values.password} />
 	<br />
 
-	<Button>Submit</Button>
+	<Button type="submit" disabled={isSubmitting}>Submit</Button>
 </form>
