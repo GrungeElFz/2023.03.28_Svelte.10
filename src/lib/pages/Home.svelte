@@ -6,17 +6,38 @@
 		email: '',
 		password: ''
 	};
+	let errors = {};
 	let isSubmitting = false;
+
+	function validate() {
+		const errors = {};
+
+		if (!values.username) {
+			errors.username = 'The Username is required.';
+		}
+		if (!values.email) {
+			errors.email = 'The Email is required.';
+		}
+		if (values.email && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
+			errors.email = 'The Email is invalid.';
+		}
+		if (!values.password) {
+			errors.password = 'The Password is required.';
+		}
+
+		return errors;
+	}
 </script>
 
 <form
 	on:submit|preventDefault={() => {
-		console.log(values);
-		isSubmitting = true;
-
-		setTimeout(() => {
-			isSubmitting = false;
-		}, 1000);
+		errors = validate();
+		if (Object.keys(errors).length === 0) {
+			isSubmitting = true;
+			setTimeout(() => {
+				isSubmitting = false;
+			}, 1000);
+		}
 	}}
 >
 	<label for="username">Username:</label>
