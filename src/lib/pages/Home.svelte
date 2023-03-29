@@ -2,35 +2,35 @@
 	import Button from '../Button.svelte';
 	import { Field, Form } from '../Form';
 
-	let values = {
-		username: '',
-		email: '',
-		password: ''
-	};
-	let errors = {};
-	let isSubmitting = false;
+	// let values = {
+	// 	username: '',
+	// 	email: '',
+	// 	password: ''
+	// };
+	// let errors = {};
+	// let isSubmitting = false;
 
-	function validate() {
-		const errors = {};
+	// function validate() {
+	// 	const errors = {};
 
-		if (!values.username) {
-			errors.username = 'The Username is required.';
-		}
-		if (!values.email) {
-			errors.email = 'The Email is required.';
-		}
-		if (values.email && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
-			errors.email = 'The Email is invalid.';
-		}
-		if (!values.password) {
-			errors.password = 'The Password is required.';
-		}
+	// 	if (!values.username) {
+	// 		errors.username = 'The Username is required.';
+	// 	}
+	// 	if (!values.email) {
+	// 		errors.email = 'The Email is required.';
+	// 	}
+	// 	if (values.email && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)) {
+	// 		errors.email = 'The Email is invalid.';
+	// 	}
+	// 	if (!values.password) {
+	// 		errors.password = 'The Password is required.';
+	// 	}
 
-		return errors;
-	}
+	// 	return errors;
+	// }
 </script>
 
-<form
+<!-- <form
 	on:submit|preventDefault={() => {
 		errors = validate();
 		if (Object.keys(errors).length === 0) {
@@ -60,4 +60,11 @@
 	{#if errors.password}<p>{errors.password}</p>{/if}
 
 	<Button type="submit" disabled={isSubmitting}>Submit</Button>
-</form>
+</form> -->
+
+<Form on:submit={() => {}}>
+  <Field label="Username" name="username" type="text" validate={() => {}} />
+  <Field label="Email" name="email" type="email" validate={() => {}} />
+  <Field label="password" name="password" type="password" validate={() => {}} />
+  <Button type="submit">Submit</Button>
+</Form>
