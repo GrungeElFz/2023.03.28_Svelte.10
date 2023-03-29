@@ -44,16 +44,19 @@
 	<br />
 	<input id="username" name="username" type="text" bind:value={values.username} />
 	<br />
+	{#if errors.username}<p>{errors.username}</p>{/if}
 
 	<label for="email">Email:</label>
 	<br />
 	<input id="email" name="email" type="email" bind:value={values.email} />
 	<br />
+	{#if errors.email}<p>{errors.email}</p>{/if}
 
 	<label for="password">Password:</label>
 	<br />
 	<input id="password" name="password" type="password" bind:value={values.password} />
 	<br />
+	{#if errors.password}<p>{errors.password}</p>{/if}
 
 	<Button type="submit" disabled={isSubmitting}>Submit</Button>
 </form>
