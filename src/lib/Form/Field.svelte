@@ -17,17 +17,17 @@
 </div>
 
 <style>
-  div.field {
-    margin-bottom: 0.8rem;
-  }
-  label {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-  }
-  input {
-    height: 2rem;
-    width: 20rem;
-    max-width: 100%;
-  }
+	div.field {
+		margin-bottom: 0.8rem;
+	}
+	label {
+		display: block;
+		font-size: 1rem;
+		margin-bottom: 0.3rem;
+	}
+	input {
+		height: 2rem;
+		width: 20rem;
+		max-width: 100%;
+	}
 </style>

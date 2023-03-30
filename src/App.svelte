@@ -35,5 +35,17 @@
 	<Settings />
 {/if}
 
-<style>
+<style lang="scss">
+	nav {
+		background-color: var(--buttonBgColor);
+		padding: 0.5rem;
+		margin-bottom: 1rem;
+		a {
+			color: var(--buttonTextColor);
+			text-decoration: none;
+			&:hover {
+				color: navajowhite;
+			}
+		}
+	}
 </style>
