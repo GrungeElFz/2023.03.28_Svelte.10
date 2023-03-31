@@ -1,13 +1,14 @@
 <script>
 	import { v4 as uuid } from 'uuid';
 	import { getContext } from 'svelte';
+	import formKey from './form-key';
 
 	export let name;
 	export let type = 'text';
 	export let label = undefined;
 	export let validate = undefined;
 
-	const { values } = getContext('form');
+	const { values } = getContext(formKey);
 
 	const id = uuid();
 </script>
