@@ -1,14 +1,20 @@
 <script>
-	import { setContext } from 'svelte';
+	import { setContext, createEventDispatcher } from 'svelte';
 	import { writable } from 'svelte/store';
 	import formKey from './form-key';
 
 	export let initialValues = {};
-	const form = writable({ values: initialValues, errors: {} })
+
+	const dispatch = createEventDispatcher();
+	const form = writable({ values: initialValues, errors: {} });
 
 	setContext(formKey, form);
 </script>
 
-<form>
+<form
+	on:submit|preventDefault={() => {
+		dispatch('submit', $form.values);
+	}}
+>
 	<slot />
 </form>
