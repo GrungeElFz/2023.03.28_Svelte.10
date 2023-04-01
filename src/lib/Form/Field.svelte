@@ -24,9 +24,18 @@
 		placeholder={label}
 		value={$formStore.values[name] || ''}
 		on:input={(e) => {
-			$formStore.values[name] = e.currentTarget.value;
+			const value = e.currentTarget.value;
+			if (validate && validate(value)) {
+				$formStore.errors[name] = validate(value, label);
+			} else {
+				delete $formStore.errors[name];
+			}
+			$formStore.values[name] = value;
 		}}
 	/>
+	{#if $formStore.errors[name]}
+		<p class="error">{$formStore.errors[name]}</p>
+	{/if}
 </div>
 
 <style>
