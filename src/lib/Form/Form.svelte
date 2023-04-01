@@ -6,14 +6,14 @@
 	export let initialValues = {};
 
 	const dispatch = createEventDispatcher();
-	const form = writable({ values: initialValues, errors: {} });
+	const formStore = writable({ values: initialValues, errors: {} });
 
-	setContext(formKey, form);
+	setContext(formKey, formStore);
 </script>
 
 <form
 	on:submit|preventDefault={() => {
-		dispatch('submit', $form.values);
+		dispatch('submit', $formStore.values);
 	}}
 >
 	<slot />
