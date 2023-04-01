@@ -8,8 +8,9 @@
 	export let label = undefined;
 	export let validate = undefined;
 
-	const formStore = getContext(formKey);
+	let isDirty = false;
 
+	const formStore = getContext(formKey);
 	const id = uuid();
 
 	onMount(() => {
@@ -30,6 +31,7 @@
 		placeholder={label}
 		value={$formStore.values[name] || ''}
 		on:input={(e) => {
+			isDirty = true;
 			const value = e.currentTarget.value;
 			if (validate && validate(value)) {
 				$formStore.errors[name] = validate(value, label);
@@ -39,7 +41,7 @@
 			$formStore.values[name] = value;
 		}}
 	/>
-	{#if $formStore.errors[name]}
+	{#if $formStore.errors[name] && (isDirty || $formStore.showErrors)}
 		<p class="error">{$formStore.errors[name]}</p>
 	{/if}
 </div>

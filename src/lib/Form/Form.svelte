@@ -6,7 +6,7 @@
 	export let initialValues = {};
 
 	const dispatch = createEventDispatcher();
-	const formStore = writable({ values: initialValues, errors: {} });
+	const formStore = writable({ values: initialValues, errors: {}, showErrors: false });
 
 	setContext(formKey, formStore);
 </script>
@@ -15,6 +15,8 @@
 	on:submit|preventDefault={() => {
 		if (Object.keys($formStore.errors).length === 0) {
 			dispatch('submit', $formStore.values);
+		} else {
+			$formStore.showErrors = true;
 		}
 	}}
 >
