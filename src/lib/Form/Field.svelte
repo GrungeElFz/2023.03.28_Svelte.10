@@ -1,6 +1,6 @@
 <script>
 	import { v4 as uuid } from 'uuid';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import formKey from './form-key';
 
 	export let name;
@@ -11,6 +11,12 @@
 	const formStore = getContext(formKey);
 
 	const id = uuid();
+
+	onMount(() => {
+		if (validate && validate($formStore.values[name])) {
+			$formStore.errors[name] = validate($formStore.values[name], label);
+		}
+	});
 </script>
 
 <div class="field">
