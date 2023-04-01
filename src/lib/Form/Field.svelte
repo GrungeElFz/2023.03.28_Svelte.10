@@ -38,7 +38,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	div.field {
 		margin-bottom: 0.8rem;
 	}
@@ -51,5 +51,9 @@
 		height: 2rem;
 		width: 20rem;
 		max-width: 100%;
+	}
+	p.error {
+		color: var(--buttonBgColor);
+		margin: 0.3rem 0 0;
 	}
 </style>
