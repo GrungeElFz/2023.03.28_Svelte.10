@@ -13,7 +13,9 @@
 
 <form
 	on:submit|preventDefault={() => {
-		dispatch('submit', $formStore.values);
+		if (Object.keys($formStore.errors).length === 0) {
+			dispatch('submit', $formStore.values);
+		}
 	}}
 >
 	<slot />
